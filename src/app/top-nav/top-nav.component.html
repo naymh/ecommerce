@@ -34,7 +34,7 @@
     </button>
     <div class="collapse navbar-collapse justify-content-center " id="mynavbar">
       <div class="d-flex w-100">
-        <input class="form-control mrl-10 fs-12 w-80 pl-4 pr-4" type="search" [(ngModel)]="searchText" placeholder="Search" aria-label="Search" (keyup.enter)="search()">
+        <input class="form-control mrl-10 fs-12 w-80 pl-4 pr-4" type="search" [(ngModel)]="searchText" placeholder="Search" aria-label="Search" (keyup.enter)="performSearch(searchText)">
         <a class="nav-link ml-4 me-2" href="#"><img src="assets/img/user.png" height="35" class="rounded" alt="Los Angeles"></a>
         <a class="nav-link" href="#"><img src="assets/img/shopping-cart.png" height="35" class="rounded" alt="Los Angeles"></a>
       </div>

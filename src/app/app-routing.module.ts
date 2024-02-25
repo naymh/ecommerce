@@ -6,9 +6,9 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, data: {search: 'some value'} },
-  { path: 'products', component: ProductListComponent , data: {p1: 'some value'}},
-  { path: 'product', component: ProductDetailComponent , data: {p1: 'some value'}},
+  { path: '', component: HomeComponent },
+  { path: 'products', component: ProductListComponent , data: {p1: 'some value',p2: 'some value'}},
+  { path: 'product', component: ProductDetailComponent , data: {p1: 'some value',p2: 'some value'}},
   { path: 'cart', component: ShoppingCartComponent },
 ];
 

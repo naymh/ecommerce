@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-top-nav',
@@ -9,18 +10,16 @@ import { Router } from '@angular/router';
 export class TopNavComponent {
 
   searchText: string = '';
+  @Output() search = new EventEmitter<string>();
+  constructor(private _router: Router, private dataService: DataService) {}
 
-  constructor(private _router: Router) {}
-
-  search() {
+  performSearch(searchText: string): void {
+    // Emit the search event with the query'
     if(this.searchText){
-      this._router.navigate(['/'], { queryParams: { search: this.searchText } }).then(() => {
-        window.location.reload();
-      });
+      this.search.emit(searchText);
     }else{
-      this._router.navigate(['/']).then(() => {
-        window.location.reload();
-      });
+      this._router.navigate(['/']);
     }
+    
   }
 }

@@ -1,3 +1,4 @@
+<app-top-nav (search)="performSearch($event)"></app-top-nav>
 <div class="container-fluid home">
   <div class="row">
     <div class="col">
@@ -78,8 +79,8 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <button class="btn w-50 btn-outline-primary mt-10 fs-12" (click)="getProductList()">See More</button>
+    <div class="row justify-content-center" *ngIf="products.length>=12">
+      <button class="btn w-50 btn-outline-primary mt-10 fs-12" (click)="readMore()">See More</button>
     </div>
   </div>
 
