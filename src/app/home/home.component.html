@@ -1,0 +1,94 @@
+<div class="container-fluid home">
+  <div class="row">
+    <div class="col">
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Home</a></li>
+        </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4">
+      <div class="category b-shadow">
+        <h4>Categories</h4>
+        <div class="cat-btn" *ngFor="let category of categories">
+          <a class="w-auto btn" (click)="goto(category)"> {{category}} </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-8 col-sm-6 col-xs-12 mb-4">
+      <div id="myCarousel" class="carousel slide b-shadow" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner slide slide-img">
+          <div class="item active">
+            <div class="card">
+              <img src="assets/img/slide1.jpeg" class="d-block w-100" height="400" alt="Los Angeles">
+            </div>
+          </div>
+          <div class="item">
+            <div class="card">
+              <img src="assets/img/slide2.jpeg" class="d-block w-100" height="400" alt="Chicago">
+            </div>
+          </div>
+          <div class="item">
+            <div class="card">
+              <img src="assets/img/slide3.jpeg" class="d-block w-100" height="400" alt="New york">
+            </div>
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control bg-none" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control bg-none" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product list with "See More" -->
+  <div class="container product">
+    <h1>Just For You</h1>
+    <div class="row">
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4" *ngFor="let product of products">
+        <div class="card h-card" (click)="gotoProductDetail(product.id)">
+          <img class="card-img-top card-img" src="{{product.thumbnail}}" alt="Product Image">
+          <div class="card-body">
+            <h4 class="card-title">{{product.title}}</h4>
+            <p class="card-text price">{{product.price | currency:'USD'}}</p>
+            <p class="card-text d-price"> {{product.discountPercentage}}% Off</p>
+            <div class="rating">
+              <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 1) }">&#9733;</span>
+              <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 2) }">&#9733;</span>
+              <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 3) }">&#9733;</span>
+              <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 4) }">&#9733;</span>
+              <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 5) }">&#9733;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <button class="btn w-50 btn-outline-primary mt-10 fs-12" (click)="getProductList()">See More</button>
+    </div>
+  </div>
+
+  <div class="container footer">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p>&copy; E-commerce - 2024 | Author: Nay Myo Htike</p>
+        <p>Email: <a href="mailto:naymyohtike998@gmail.com">email</a></p>
+      </div>
+    </div>
+  </div>
+</div>

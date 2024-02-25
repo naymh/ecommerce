@@ -1,0 +1,87 @@
+<div class="container-fluid home">
+    <div class="row">
+        <div class="col">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item">></li>
+                <li class="list-inline-item">Product List</li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="container col-lg-3 col-md-3 col-sm-6 col-12 filter mb-3">
+        <div class="row">
+            <h4 class="ml-4">Filter by :</h4>
+        </div>
+        <div class="row">
+            <ul class="list-group list-group-flush w-100">
+                <li class="list-group-item border-bottom-0" *ngFor="let brand of uniqueBrands">
+                    <div class="form-check">
+                        <input type="checkbox" [id]="brand" [(ngModel)]="selectedBrands[brand]" (change)="filterProducts()">
+                        <label class="ml-4" [for]="brand">{{ brand }}</label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row mb-3 ">
+        <div class="col-lg-7 col-md-6 col-sm-6 col-5">
+            <h1>{{category}}</h1>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-6 col-7 d-flex justify-content-end align-items-center">
+            <div class="col-4 col-md-5 p-2 text-right fs-12">
+                <label for="orderBySelect">Sort by:</label>
+            </div>
+            <div class="col-8 col-md-7">
+                <select class="form-control" [(ngModel)]="orderBy" name="orderBySelect" (ngModelChange)="sortBy(orderBy)">
+                    <option value="1">Name</option>
+                    <option value="2">Price Low to High</option>
+                    <option value="3">Price High to Low</option>
+                    <option value="4">Rating</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-lg-9 col-md-9 col-sm-12">
+        <div class="row product">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4" *ngFor="let product of filteredProducts">
+                <div class="card h-card" (click)="gotoProductDetail(product.id)">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 p-4">
+                            <img class="card-img" src="{{product.thumbnail}}" alt="Product Image">
+                        </div>
+                        <div class="col-md-8 p-4">
+                            <div class="card-body">
+                                <h3 class="card-title">{{product.title}}</h3>
+                                <div class="rating">
+                                    <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 1) }">&#9733;</span>
+                                    <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 2) }">&#9733;</span>
+                                    <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 3) }">&#9733;</span>
+                                    <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 4) }">&#9733;</span>
+                                    <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 5) }">&#9733;</span>
+                                </div>
+                                <p class="card-text p-price">{{product.price | currency:'USD'}}</p>
+                                <p class="card-text d-price"> {{product.discountPercentage}}% Off</p>
+                                <p class="card-text fs-12">Brand: {{product.brand}}</p>
+                                <p class="card-text fs-12">Category: {{product.category}}</p>
+                                <p class="card-text fs-12">Stock: {{product.stock}}</p>
+                                <p class="card-text fs-12">{{product.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container footer">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>&copy; E-commerce - 2024 | Author: Nay Myo Htike</p>
+                <p>Email: <a href="mailto:naymyohtike998@gmail.com">email</a></p>
+            </div>
+        </div>
+    </div>
+</div>

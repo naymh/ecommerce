@@ -1,0 +1,88 @@
+<div class="container-fluid home">
+    <div class="row">
+        <div class="col">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item">></li>
+                <li class="list-inline-item">Product Detail</li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="container detail">
+        <div class="row">
+            <div class="col-lg-5 col-md-6 col-sm-12 mb-3">
+                <div class="d-img">
+                    <img class="img-fluid" src="{{product.thumbnail}}" alt="Product Image">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="images" *ngFor="let image of product.images">
+                        <img src="{{image}}" alt="" class="img-fluid" (click)="changeImg(image)">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>{{product.title}}</h1>
+                    </div>
+                    <div class="col-12 rating">
+                        <!-- Star Ratings -->
+                        <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 1) }">&#9733;</span>
+                        <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 2) }">&#9733;</span>
+                        <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 3) }">&#9733;</span>
+                        <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 4) }">&#9733;</span>
+                        <span class="star" [ngStyle]="{ 'color': getStarColor(product.rating, 5) }">&#9733;</span>
+                    </div>
+                    <div class="col-6 col-md-4 fs-14">Brand</div>
+                    <div class="col-6 col-md-8 fs-14">{{product.brand}}</div>
+                    <div class="col-12">
+                        <hr>
+                    </div>
+                    <div class="col-12">
+                        <p class="detail-price">{{product.price | currency:'USD'}}</p>
+                    </div>
+                    <div class="col-6 col-md-4 dd-price">Discount</div>
+                    <div class="col-6 col-md-8">
+                        <p class="dd-price"> <span></span> {{product.discountPercentage }}% Off</p>
+                    </div>
+                    
+                    <div class="col-6 col-md-4 fs-14">Category</div>
+                    <div class="col-6 col-md-8 fs-14">{{product.category}}</div>
+                    <div class="col-6 col-md-4 fs-14">Stock</div>
+                    <div class="col-6 col-md-8 fs-14">{{product.stock}}</div>
+                    <div class="col-12">
+                        <p class="fs-14 mt-4">{{product.description}}</p>
+                    </div>
+                </div>
+                <!-- Quantity Input Box -->
+                <div class="row mt-4">
+                    <div class="col-4 col-md-4 fs-12  p-4 text-right">
+                        <label for="quantity">Quantity</label>
+                    </div>
+                    <div class="col-6 col-md-4 ">
+                        <input class="form-control fs-14 input-lg text-center" type="number" id="quantity" name="quantity" [(ngModel)]="quantity" min="1" max="100">
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Buy Now Button -->
+                    <div class="col-4 col-md-offset-1 col-md-4 m-4">
+                        <button class="m-4 btn-buy">Buy Now</button>
+                    </div>
+                    <!-- Add to Cart Button -->
+                    <div class="col-4 col-md-4 m-4">
+                        <button class="m-4 btn-add">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container footer">
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>&copy; E-commerce - 2024 | Author: Nay Myo Htike</p>
+                <p>Email: <a href="mailto:naymyohtike998@gmail.com">email</a></p>
+            </div>
+        </div>
+    </div>
+</div>
